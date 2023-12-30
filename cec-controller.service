@@ -1,0 +1,14 @@
+[Unit]
+Description=Sends cec-client on/off commands based on LMS server state.
+Wants=network.target
+After=syslog.target network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/cec-controller.sh
+Restart=on-failure
+RestartSec=10
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
